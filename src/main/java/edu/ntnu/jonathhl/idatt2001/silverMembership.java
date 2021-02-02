@@ -1,7 +1,8 @@
-public class goldMembership extends membership {
+package edu.ntnu.jonathhl.idatt2001;
 
-    private float POINTS_SCALING_FACTOR_LEVEL_1 = 1.3f;
-    private float POINTS_SCALING_FACTOR_LEVEL_2 = 1.5f;
+public class silverMembership extends membership {
+
+    private float POINTS_SCALING_FACTOR = 1.2f;
 
     @Override
     public int registerPoints(int bonusPointBalance, int newPoints) {
@@ -10,7 +11,6 @@ public class goldMembership extends membership {
 
     @Override
     public String getMembershipName() {
-        return "Gold membership";
+        return "Silver Membership";
     }
-
 }

@@ -1,3 +1,5 @@
+package edu.ntnu.jonathhl.idatt2001;
+
 public class basicMembership extends membership {
 
     @Override
