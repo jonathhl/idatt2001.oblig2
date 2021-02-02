@@ -77,12 +77,13 @@ public class bonusMember {
     }
 
     public void checkAndSetMembership() {
-        if(bonusPointsBalance < SILVER_LIMIT) {
-            Membership.getMembershipName();
-        } else if(bonusPointsBalance >= SILVER_LIMIT && GOLD_LIMIT > bonusPointsBalance) {
-            Membership.getMembershipName();
-        } else if(bonusPointsBalance >= GOLD_LIMIT) {
-            Membership.getMembershipName();
+        if(bonusPointsBalance < SILVER_LIMIT && !(Membership instanceof basicMembership)) {
+            Membership = new basicMembership();
+        } else if(bonusPointsBalance >= SILVER_LIMIT && GOLD_LIMIT > bonusPointsBalance &&
+                 !(Membership instanceof silverMembership)) {
+            Membership = new silverMembership();
+        } else if(bonusPointsBalance >= GOLD_LIMIT && !(Membership instanceof goldMembership)) {
+            Membership = new goldMembership();
         }
     }
 }
