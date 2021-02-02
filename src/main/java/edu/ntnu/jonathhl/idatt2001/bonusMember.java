@@ -77,13 +77,27 @@ public class bonusMember {
     }
 
     public void checkAndSetMembership() {
-        if(bonusPointsBalance < SILVER_LIMIT && !(Membership instanceof basicMembership)) {
-            Membership = new basicMembership();
-        } else if(bonusPointsBalance >= SILVER_LIMIT && GOLD_LIMIT > bonusPointsBalance &&
-                 !(Membership instanceof silverMembership)) {
+        if(bonusPointsBalance >= SILVER_LIMIT && !(Membership instanceof silverMembership)) {
             Membership = new silverMembership();
         } else if(bonusPointsBalance >= GOLD_LIMIT && !(Membership instanceof goldMembership)) {
             Membership = new goldMembership();
         }
+    }
+
+    public String getMembershipLevel() {
+        return Membership.getMembershipName();
+    }
+
+    @Override
+    public String toString() {
+        return "bonusMember{" +
+                "memberNumber=" + memberNumber +
+                ", enrolledDate=" + enrolledDate +
+                ", bonusPointsBalance=" + bonusPointsBalance +
+                ", name='" + name + '\'' +
+                ", eMailAddress='" + eMailAddress + '\'' +
+                ", password='" + password + '\'' +
+                ", Membership=" + Membership +
+                '}';
     }
 }
