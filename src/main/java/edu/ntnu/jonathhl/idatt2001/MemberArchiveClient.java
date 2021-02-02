@@ -10,7 +10,7 @@ import java.util.HashMap;
  *
  * @author arne
  */
-public class MemberArchive {
+public class MemberArchiveClient {
 
     // Use a HashMap, since the members have a unique member number.
     private HashMap<Integer, bonusMember> members;
@@ -18,7 +18,7 @@ public class MemberArchive {
     /**
      * Creates a new instance of MemberArchive.
      */
-    public MemberArchive() {
+    public MemberArchiveClient() {
         this.members = new HashMap<>();
         this.fillRegisterWithTestdata();
     }
