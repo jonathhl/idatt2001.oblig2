@@ -18,14 +18,12 @@ public class bonusMember {
     private static final int GOLD_LIMIT = 75000;
 
     public bonusMember(int memberNumber, LocalDate enrolledDate, int bonusPointsBalance, String name,
-                       String eMailAddress, String password, membership membership) {
+                       String eMailAddress) {
         this.memberNumber = memberNumber;
         this.enrolledDate = enrolledDate;
         this.bonusPointsBalance = bonusPointsBalance;
         this.name = name;
         this.eMailAddress = eMailAddress;
-        this.password = password;
-        Membership = membership;
     }
 
     public int getMemberNumber() {
