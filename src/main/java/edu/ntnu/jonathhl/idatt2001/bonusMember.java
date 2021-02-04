@@ -98,4 +98,6 @@ public class bonusMember {
                 ", Membership=" + Membership +
                 '}';
     }
+
+
 }

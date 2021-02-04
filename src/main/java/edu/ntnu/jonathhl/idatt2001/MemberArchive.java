@@ -24,27 +24,30 @@ public class MemberArchive {
     }
 
     /**
-     * Adds a new member to the register. The new member must have a memebr number
-     * different from exsisting members. If not, the new member will not be added.
-     *
-     * @return {@code true} if the new member was added successfully,
-     *         {@code false} if the new member could not be added, due to a
-     *          membernumber that allready exsists.
+     * Method to add a new member to the HashMap. The method checks if any members are already registered with the
+     * specified member number.
+     * @param bonusMember Key number for all members specified. Checks if it is already registered.
+     * @return Returns and adds a new member.
      */
-    public boolean addMember(bonusMember bonusMember) {
-        boolean success = false;
-        //TODO: Fill in your solution
-        for (int i = 0; i < members.size(); i++) {
-            if(members.containsKey())
+    public int addMember(bonusMember bonusMember) {
+        if(members.containsKey(bonusMember.getMemberNumber())) {
+            return -1;
         }
-        return success;
+        members.put(bonusMember.getMemberNumber(), bonusMember);
+        return bonusMember.getMemberNumber();
     }
 
-
+    /**
+     * Method to find the amount of points a specified member has registered in their name.
+     * @param memberNumber Key number for the specified member.
+     * @param password The method checks through the entered password if it corresponds to the registered password.
+     * @return Returns an integer value, in the form of points.
+     * @throws Exception
+     */
     public int findPoints(int memberNumber, String password) throws Exception {
         int pointBalance = 0;
         for (int i = 0; i < members.size(); i++) {
-            if(members.containsKey(memberNumber) && members.containsValue(password)) {
+            if(members.containsKey(memberNumber) && members.get(memberNumber).checkPassword(password)) {
                 pointBalance += members.get(i).getBonusPointsBalance();
             } else {
                 throw new RuntimeException("Either the member is not registered, or the password is wrong.");
@@ -54,14 +57,12 @@ public class MemberArchive {
     }
 
     /**
-     * Registers new bonuspoints to the member with the member number given
-     * by the parameter {@code memberNumber}. If no member in the register
-     * matches the provided member number, {@code false} is returned.
-     *
-     * @param memberNumber the member number to add the bonus points to
-     * @param bonusPoints the bonus points to be added
-     * @return {@code true} if bonuspoints were added successfully,
-     *         {@code false} if not.
+     * Method to register additional points to an existing member.
+     * @param memberNumber Key number for the specified member.
+     * @param bonusPoints Additional points to be added.
+     * @return {@code true} if member number is registered.
+     *         {@code false} if method does not find any member with the entered number key.
+     * @throws Exception if method returns false, and gives an error message to the console.
      */
     public boolean registerPoints(int memberNumber, int bonusPoints) throws Exception {
         boolean success = false;
@@ -78,15 +79,17 @@ public class MemberArchive {
     }
 
     /**
-     * Lists all members to the console.
+     * Prints out a list of all registered members.
      */
     public void listAllMembers() {
-        //TODO: Fill in your solution
+        for (bonusMember BonusMember : members.values()) {
+            System.out.println(BonusMember.toString());
+        }
     }
 
 
     /**
-     * Fills the register with some arbitrary members, for testing purposes.
+     * Some example members for testing the code.
      */
     private void fillRegisterWithTestdata() {
         bonusMember member = new bonusMember(1, LocalDate.now(), 10000, "Olsen, Ole", "ole@olsen.biz");
@@ -101,8 +104,5 @@ public class MemberArchive {
         this.members.put(member.getMemberNumber(), member);
 
     }
-
-
-
 }
 
