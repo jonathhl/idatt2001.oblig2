@@ -34,6 +34,9 @@ public class MemberArchive {
     public boolean addMember(bonusMember bonusMember) {
         boolean success = false;
         //TODO: Fill in your solution
+        for (int i = 0; i < members.size(); i++) {
+            if(members.containsKey())
+        }
         return success;
     }
 
@@ -41,7 +44,7 @@ public class MemberArchive {
     public int findPoints(int memberNumber, String password) throws Exception {
         int pointBalance = 0;
         for (int i = 0; i < members.size(); i++) {
-            if(members.containsKey(memberNumber) || members.containsValue(password)) {
+            if(members.containsKey(memberNumber) && members.containsValue(password)) {
                 pointBalance += members.get(i).getBonusPointsBalance();
             } else {
                 throw new RuntimeException("Either the member is not registered, or the password is wrong.");
@@ -62,7 +65,7 @@ public class MemberArchive {
      */
     public boolean registerPoints(int memberNumber, int bonusPoints) throws Exception {
         boolean success = false;
-        //TODO: Fill in your solution
+        //TODO: Test code
         for (int i = 0; i < members.size(); i++) {
             if(members.containsKey(memberNumber)) {
                 int updatedPointBalance = members.get(i).getBonusPointsBalance() + bonusPoints;
