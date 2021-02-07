@@ -1,5 +1,11 @@
 package edu.ntnu.jonathhl.idatt2001;
 
+/**
+ * Class to calculate the scaling of points earned inside the gold membership.
+ * @author Jonathan Løseth
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public class goldMembership extends membership {
 
     @Override

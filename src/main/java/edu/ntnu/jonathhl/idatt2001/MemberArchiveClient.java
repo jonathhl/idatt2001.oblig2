@@ -6,6 +6,8 @@ import java.util.HashMap;
 /**
  * The client class for the different membership classes.
  * @author Jonathan Løseth
+ * @version 1.0.0
+ * @since 1.0.0
  */
 public class MemberArchiveClient {
 

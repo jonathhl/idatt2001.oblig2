@@ -1,5 +1,11 @@
 package edu.ntnu.jonathhl.idatt2001;
 
+/**
+ * Class to calculate point scaling within the silver memberships.
+ * @author Jonathan Løseth
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public class silverMembership extends membership {
 
 

@@ -2,6 +2,13 @@ package edu.ntnu.jonathhl.idatt2001;
 
 import java.time.LocalDate;
 
+/**
+ * class to keep info about each member. It also contains a constructor, and getters. It also contains some methods
+ * to check status on different members, as well as updating the amount of points each member has.
+ * @author Jonathan Løseth
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public class bonusMember {
 
     private int memberNumber;
@@ -17,6 +24,14 @@ public class bonusMember {
     private static final int SILVER_LIMIT = 25000;
     private static final int GOLD_LIMIT = 75000;
 
+    /**
+     * A constructor.
+     * @param memberNumber
+     * @param enrolledDate
+     * @param bonusPointsBalance
+     * @param name
+     * @param eMailAddress
+     */
     public bonusMember(int memberNumber, LocalDate enrolledDate, int bonusPointsBalance, String name,
                        String eMailAddress) {
         this.memberNumber = memberNumber;
@@ -64,6 +79,11 @@ public class bonusMember {
         return GOLD_LIMIT;
     }
 
+    /**
+     * Method to check if the password entered corresponds with the one registered.
+     * @param password
+     * @return
+     */
     public boolean checkPassword(String password) {
         if(password.equals(getPassword())) {
             return true;
@@ -72,11 +92,19 @@ public class bonusMember {
         }
     }
 
+    /**
+     * Method to register new points, and update them. The method also updates the membership status if the points go
+     * over the differenth thresholds.
+     * @param newPoints
+     */
     public void registerBonusPoints(int newPoints) {
         bonusPointsBalance = Membership.registerPoints(bonusPointsBalance, newPoints);
         checkAndSetMembership();
     }
 
+    /**
+     * Here is the exact method to actually "promote" a membership status.
+     */
     public void checkAndSetMembership() {
         if(bonusPointsBalance >= SILVER_LIMIT && !(Membership instanceof silverMembership)) {
             Membership = new silverMembership();
