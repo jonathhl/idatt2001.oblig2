@@ -24,6 +24,8 @@ public class bonusMember {
         this.bonusPointsBalance = bonusPointsBalance;
         this.name = name;
         this.eMailAddress = eMailAddress;
+
+        checkAndSetMembership();
     }
 
     public int getMemberNumber() {
@@ -71,7 +73,8 @@ public class bonusMember {
     }
 
     public void registerBonusPoints(int newPoints) {
-        Membership.registerPoints(bonusPointsBalance, newPoints);
+        bonusPointsBalance = Membership.registerPoints(bonusPointsBalance, newPoints);
+        checkAndSetMembership();
     }
 
     public void checkAndSetMembership() {

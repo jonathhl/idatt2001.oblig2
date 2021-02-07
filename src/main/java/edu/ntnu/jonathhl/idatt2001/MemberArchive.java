@@ -46,14 +46,10 @@ public class MemberArchive {
      */
     public int findPoints(int memberNumber, String password) throws Exception {
         int pointBalance = 0;
-        for (int i = 0; i < members.size(); i++) {
-            if(members.containsKey(memberNumber) && members.get(memberNumber).checkPassword(password)) {
-                pointBalance += members.get(i).getBonusPointsBalance();
-            } else {
-                throw new RuntimeException("Either the member is not registered, or the password is wrong.");
-            }
+        if(!members.containsKey(memberNumber) && members.get(memberNumber).checkPassword(password)) {
+            throw new RuntimeException("This member does not exist, or the password is wrong.");
         }
-        return pointBalance;
+        return members.get(memberNumber).getBonusPointsBalance();
     }
 
     /**
@@ -64,18 +60,13 @@ public class MemberArchive {
      *         {@code false} if method does not find any member with the entered number key.
      * @throws Exception if method returns false, and gives an error message to the console.
      */
-    public boolean registerPoints(int memberNumber, int bonusPoints) throws Exception {
-        boolean success = false;
-        //TODO: Test code
-        for (int i = 0; i < members.size(); i++) {
-            if(members.containsKey(memberNumber)) {
-                int updatedPointBalance = members.get(i).getBonusPointsBalance() + bonusPoints;
-                success = true;
-            } else {
-                throw new RuntimeException("Something went wrong, the points were not added.");
-            }
+    public boolean registerPoints(int memberNumber, int bonusPoints) {
+        if(members.containsKey(memberNumber)) {
+            members.get(memberNumber).registerBonusPoints(bonusPoints);
+            return true;
+        } else {
+            return false;
         }
-        return success;
     }
 
     /**
@@ -91,7 +82,7 @@ public class MemberArchive {
     /**
      * Some example members for testing the code.
      */
-    private void fillRegisterWithTestdata() {
+    protected void fillRegisterWithTestdata() {
         bonusMember member = new bonusMember(1, LocalDate.now(), 10000, "Olsen, Ole", "ole@olsen.biz");
         this.members.put(member.getMemberNumber(), member);
         member = new bonusMember(2, LocalDate.now(), 15000, "Jensen, Jens", "jens@jensen.biz");
