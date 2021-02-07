@@ -106,10 +106,12 @@ public class bonusMember {
      * Here is the exact method to actually "promote" a membership status.
      */
     public void checkAndSetMembership() {
-        if(bonusPointsBalance >= SILVER_LIMIT && !(Membership instanceof silverMembership)) {
-            Membership = new silverMembership();
-        } else if(bonusPointsBalance >= GOLD_LIMIT && !(Membership instanceof goldMembership)) {
+        if(bonusPointsBalance >= GOLD_LIMIT && !(Membership instanceof goldMembership)) {
             Membership = new goldMembership();
+        } else if(bonusPointsBalance >= SILVER_LIMIT && !(Membership instanceof silverMembership)) {
+            Membership = new silverMembership();
+        } else if(!(Membership instanceof basicMembership)) {
+            Membership = new basicMembership();
         }
     }
 
