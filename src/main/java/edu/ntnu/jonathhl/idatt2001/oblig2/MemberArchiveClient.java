@@ -1,7 +1,4 @@
-package edu.ntnu.jonathhl.idatt2001;
-
-import java.time.LocalDate;
-import java.util.HashMap;
+package edu.ntnu.jonathhl.idatt2001.oblig2;
 
 /**
  * The client class for the different membership classes.

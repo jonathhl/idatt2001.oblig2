@@ -1,4 +1,4 @@
-package edu.ntnu.jonathhl.idatt2001;
+package edu.ntnu.jonathhl.idatt2001.oblig2;
 
 import java.time.LocalDate;
 
@@ -33,12 +33,13 @@ public class bonusMember {
      * @param eMailAddress
      */
     public bonusMember(int memberNumber, LocalDate enrolledDate, int bonusPointsBalance, String name,
-                       String eMailAddress) {
+                       String eMailAddress, String password) {
         this.memberNumber = memberNumber;
         this.enrolledDate = enrolledDate;
         this.bonusPointsBalance = bonusPointsBalance;
         this.name = name;
         this.eMailAddress = eMailAddress;
+        this.password = password;
 
         checkAndSetMembership();
     }

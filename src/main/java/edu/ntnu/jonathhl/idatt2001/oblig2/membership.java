@@ -1,4 +1,4 @@
-package edu.ntnu.jonathhl.idatt2001;
+package edu.ntnu.jonathhl.idatt2001.oblig2;
 
 /**
  * Abstract class to keep the methods "registerPoints" and "getMembershipName". The class is used to calculate the

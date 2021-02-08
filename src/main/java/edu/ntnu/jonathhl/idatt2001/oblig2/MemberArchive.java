@@ -1,4 +1,4 @@
-package edu.ntnu.jonathhl.idatt2001;
+package edu.ntnu.jonathhl.idatt2001.oblig2;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -26,15 +26,15 @@ public class MemberArchive {
     /**
      * Method to add a new member to the HashMap. The method checks if any members are already registered with the
      * specified member number.
-     * @param bonusMember Key number for all members specified. Checks if it is already registered.
+     * @param BonusMember Key number for all members specified. Checks if it is already registered.
      * @return Returns and adds a new member.
      */
-    public int addMember(bonusMember bonusMember) {
-        if(members.containsKey(bonusMember.getMemberNumber())) {
+    public int addMember(bonusMember BonusMember) {
+        if(members.containsKey(BonusMember.getMemberNumber())) {
             return -1;
         }
-        members.put(bonusMember.getMemberNumber(), bonusMember);
-        return bonusMember.getMemberNumber();
+        members.put(BonusMember.getMemberNumber(), BonusMember);
+        return BonusMember.getMemberNumber();
     }
 
     /**
@@ -83,15 +83,15 @@ public class MemberArchive {
      * Some example members for testing the code.
      */
     protected void fillRegisterWithTestdata() {
-        bonusMember member = new bonusMember(1, LocalDate.now(), 10000, "Olsen, Ole", "ole@olsen.biz");
+        bonusMember member = new bonusMember(1, LocalDate.now(), 10000, "Olsen, Ole", "ole@olsen.biz", "password1");
         this.members.put(member.getMemberNumber(), member);
-        member = new bonusMember(2, LocalDate.now(), 15000, "Jensen, Jens", "jens@jensen.biz");
+        member = new bonusMember(2, LocalDate.now(), 15000, "Jensen, Jens", "jens@jensen.biz", "password2");
         this.members.put(member.getMemberNumber(), member);
-        member = new bonusMember(3, LocalDate.now(), 5000, "Lie, Linda", "linda@lie.no");
+        member = new bonusMember(3, LocalDate.now(), 5000, "Lie, Linda", "linda@lie.no", "password3");
         this.members.put(member.getMemberNumber(), member);
-        member = new bonusMember(4, LocalDate.now(), 30000, "Paulsen, Paul", "paul@paulsen.org");
+        member = new bonusMember(4, LocalDate.now(), 30000, "Paulsen, Paul", "paul@paulsen.org", "password4");
         this.members.put(member.getMemberNumber(), member);
-        member = new bonusMember(5, LocalDate.now(), 75000, "FLo, Finn", "finn.flo@gmail.com");
+        member = new bonusMember(5, LocalDate.now(), 75000, "FLo, Finn", "finn.flo@gmail.com", "password5");
         this.members.put(member.getMemberNumber(), member);
 
     }

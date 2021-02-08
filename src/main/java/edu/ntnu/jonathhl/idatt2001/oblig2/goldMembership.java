@@ -1,4 +1,4 @@
-package edu.ntnu.jonathhl.idatt2001;
+package edu.ntnu.jonathhl.idatt2001.oblig2;
 
 /**
  * Class to calculate the scaling of points earned inside the gold membership.
