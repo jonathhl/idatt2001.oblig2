@@ -5,6 +5,11 @@ import org.junit.jupiter.api.DisplayName;
 
 import java.time.LocalDate;
 
+/**
+ * Test class aimed towards the class MemberArchive.java
+ * @author Jonathan Løseth
+ * @version 1.0.0
+ */
 public class MemberArchiveTest {
 
     @Test
