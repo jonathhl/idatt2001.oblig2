@@ -20,7 +20,7 @@ public class BonusMemberTest {
     public void checkUpgradeToSilverAtThreshold() {
         bonusMember bm = new bonusMember(1, LocalDate.now(), 0, "Name", "test@test.no", "password");
         bm.registerBonusPoints(25000);
-        assert bm.getMembershipLevel().equals("Silver membership");
+        assert bm.getMembershipLevel().equals("Silver Membership");
     }
 
     @Test
@@ -44,12 +44,20 @@ public class BonusMemberTest {
     public void checkMembershipDoesntChangeBeforeGoldLimit() {
         bonusMember bm = new bonusMember(1, LocalDate.now(), 0, "Name", "test@test.no", "password");
         bm.registerBonusPoints(74999);
-        assert bm.getMembershipLevel().equals("Silver membership");
+        assert bm.getMembershipLevel().equals("Silver Membership");
     }
 
     @Test
-    @DisplayName("Password has to match for access")
-    public void memberPasswordHasToMatchToGetAccess() throws Exception {
+    @DisplayName("Wrong password does not give access")
+    public void wrongPasswordDoesNotGiveAccess() {
+        MemberArchive ma = new MemberArchive();
+        ma.addMember(new bonusMember(1, LocalDate.now(), 0, "Name", "eMail", "password"));
+        assert ma.findPoints(1, "hei") == -1;
+    }
+
+    @Test
+    @DisplayName("Right password gives access")
+    public void rightPasswordGivesAccess() {
         MemberArchive ma = new MemberArchive();
         ma.addMember(new bonusMember(1, LocalDate.now(), 0, "Name", "eMail", "password"));
         assert ma.findPoints(1, "password") == -1;

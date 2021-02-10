@@ -44,10 +44,9 @@ public class MemberArchive {
      * @return Returns an integer value, in the form of points.
      * @throws Exception
      */
-    public int findPoints(int memberNumber, String password) throws Exception {
-        int pointBalance = 0;
-        if(!members.containsKey(memberNumber) && members.get(memberNumber).checkPassword(password)) {
-            throw new RuntimeException("This member does not exist, or the password is wrong.");
+    public int findPoints(int memberNumber, String password) {
+        if(!members.containsKey(memberNumber) || !(members.get(memberNumber).checkPassword(password))) {
+            return -1;
         }
         return members.get(memberNumber).getBonusPointsBalance();
     }
